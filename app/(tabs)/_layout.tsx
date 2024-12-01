@@ -25,12 +25,6 @@ const _layout = () => {
           title: "Rank",
         }}
       />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: "Explore",
-        }}
-      />
     </Tabs>
   );
 };

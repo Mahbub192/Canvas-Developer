@@ -25,9 +25,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
     rank: (props: any) => (
       <FontAwesome6 name="ranking-star" size={24} color="black" {...props} />
     ),
-    explore: (props: any) => (
-      <Feather name="compass" size={26} color={greyColor} {...props} />
-    ),
   };
   return (
     <View style={styles.tabbar}>

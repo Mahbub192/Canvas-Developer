@@ -15,6 +15,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Divided from "@/components/divided ";
 import Card from "@/components/Card";
+import { StatusBar as ST } from "expo-status-bar";
 
 const index = () => {
   return (
@@ -51,6 +52,7 @@ const index = () => {
           <Card />
           <Card />
         </ScrollView>
+        <ST style="light" />
       </SafeAreaView>
     </>
   );
