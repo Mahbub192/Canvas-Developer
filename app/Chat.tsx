@@ -15,6 +15,7 @@ import ActiveImage from "@/components/ActiveImage";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Chat = () => {
   const [value, setValue] = useState("");
@@ -139,11 +140,9 @@ const Chat = () => {
                     source={{ uri: singleMess.avatar }}
                     style={styles.avatar}
                   />
-                  <View
-                    style={[
-                      styles.messageBubble,
-                      singleMess.type === "my" && styles.myMessageBubble,
-                    ]}
+                  <LinearGradient
+                    style={styles.myMessageBubble}
+                    colors={["#4c669f", "#3b5998", "#192f6a"]}
                   >
                     <Text style={[styles.name, { color: "white" }]}>
                       {singleMess.name}
@@ -154,7 +153,7 @@ const Chat = () => {
                     <Text style={[styles.time, { color: "white" }]}>
                       {singleMess.time}
                     </Text>
-                  </View>
+                  </LinearGradient>
                 </>
               )}
             </View>
@@ -237,8 +236,16 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   myMessageBubble: {
-    backgroundColor: "#007BFF",
-    borderColor: "#007BFF",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    borderRadius: 20,
+    maxWidth: "75%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   name: {
     fontWeight: "bold",

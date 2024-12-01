@@ -3,6 +3,8 @@ import React from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import Entypo from "@expo/vector-icons/Entypo";
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
   const primaryColor = "#0891b2";
@@ -19,6 +21,9 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
         color="black"
         {...props}
       />
+    ),
+    rank: (props: any) => (
+      <FontAwesome6 name="ranking-star" size={24} color="black" {...props} />
     ),
     explore: (props: any) => (
       <Feather name="compass" size={26} color={greyColor} {...props} />
@@ -45,6 +50,8 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             target: route.key,
             canPreventDefault: true,
           });
+
+          console.log(57, route.name);
 
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name, route.params);
