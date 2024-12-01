@@ -1,74 +1,98 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import Header from "@/components/Header";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Divided from "@/components/divided ";
+import Card from "@/components/Card";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+const index = () => {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <>
+      <Tabs.Screen
+        options={{
+          header: () => <Header />,
+        }}
+      />
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          <View style={styles.filterSearch}>
+            <View>
+              <FontAwesome name="sliders" size={30} color="#145E94" />
+            </View>
+            <View style={styles.search}>
+              <View>
+                <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                  Date | hour...
+                </Text>
+              </View>
+              <View>
+                <AntDesign name="down" size={24} color="black" />
+              </View>
+            </View>
+          </View>
+          <Divided />
+          <View style={[styles.doublesGames, { marginTop: 10 }]}>
+            <Text>Doubles games</Text>
+          </View>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
-}
+};
+
+export default index;
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    marginTop: 40,
+    paddingTop: StatusBar.currentHeight,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  filterSearch: {
+    marginLeft: 20,
+    marginRight: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    gap: 15,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  search: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: 200,
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: "#cccfd1",
+    borderRadius: 15,
+  },
+  doublesGames: {
+    marginLeft: 20,
+    marginRight: 20,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: "#145E94",
+    borderRadius: 15,
+    width: 130,
+    paddingHorizontal: 8,
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
